@@ -71,18 +71,33 @@ class InputSampleTrain(object):
                 list_context.append(qa_dict)
 
             len_context = len(context)
-            if idx == (len_context - 1):
-                l_sample.append(list_context[idx - 2]) 
-                l_sample.append(list_context[idx - 1]) 
-                l_sample.append(list_context[idx]) 
-            elif idx == 0:
-                # l_sample.append(list_context[idx + 2]) 
-                l_sample.append(list_context[idx + 1]) 
-                l_sample.append(list_context[idx]) 
-            else:
-                l_sample.append(list_context[idx - 1]) 
-                l_sample.append(list_context[idx]) 
-                l_sample.append(list_context[idx + 1]) 
+            try:
+                if idx == (len_context - 1):
+                    l_sample.append(list_context[idx - 2]) 
+                    l_sample.append(list_context[idx - 1]) 
+                    l_sample.append(list_context[idx]) 
+                elif idx == 0:
+                    l_sample.append(list_context[idx + 2]) 
+                    l_sample.append(list_context[idx + 1]) 
+                    l_sample.append(list_context[idx])
+                else:
+                    l_sample.append(list_context[idx - 1]) 
+                    l_sample.append(list_context[idx]) 
+                    l_sample.append(list_context[idx + 1]) 
+            except:
+                    l_sample.append(list_context[idx]) 
+            # if idx == (len_context - 1):
+            #         l_sample.append(list_context[idx - 2]) 
+            #         l_sample.append(list_context[idx - 1]) 
+            #         l_sample.append(list_context[idx]) 
+            # elif idx == 0:
+            #     l_sample.append(list_context[idx + 2]) 
+            #     l_sample.append(list_context[idx + 1]) 
+            #     l_sample.append(list_context[idx]) 
+            # else:
+            #     l_sample.append(list_context[idx - 1]) 
+            #     l_sample.append(list_context[idx]) 
+            #     l_sample.append(list_context[idx + 1]) 
         return l_sample
 
 
